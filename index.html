@@ -339,14 +339,24 @@
     function setHashInputFromHps(hash) {
       const abs = Math.abs(hash);
       let unitValue = 1e9;
+      let unitString = '1e9';
 
-      if (abs >= 1e21) unitValue = 1e21;
-      else if (abs >= 1e18) unitValue = 1e18;
-      else if (abs >= 1e15) unitValue = 1e15;
-      else if (abs >= 1e12) unitValue = 1e12;
+      if (abs >= 1e21) {
+        unitValue = 1e21;
+        unitString = '1e21';
+      } else if (abs >= 1e18) {
+        unitValue = 1e18;
+        unitString = '1e18';
+      } else if (abs >= 1e15) {
+        unitValue = 1e15;
+        unitString = '1e15';
+      } else if (abs >= 1e12) {
+        unitValue = 1e12;
+        unitString = '1e12';
+      }
 
       $('networkHash').value = cleanNumber(hash / unitValue, 4);
-      $('networkUnit').value = String(unitValue);
+      $('networkUnit').value = unitString;
       updateNetworkHashFormatted();
     }
 
